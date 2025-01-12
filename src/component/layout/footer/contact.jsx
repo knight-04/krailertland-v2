@@ -1,49 +1,43 @@
+import { Facebook, MessageCircle, Instagram } from 'lucide-react';
 import React from 'react';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white">
-      <div className="container mx-auto px-4 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div>
-            <h3 className="text-3xl font-extrabold mb-8 text-amber-500">Contact Us</h3>
-            <div className="space-y-6 text-lg">
-              <div className="flex items-center gap-4">
-                <MapPin className="text-amber-500" />
-                <span>123 เมืองเอก คลองหลวง ปทุมธานี 11200</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <Phone className="text-amber-500" />
-                <span>+66 2 123 4567</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <Mail className="text-amber-500" />
-                <span>contact@yourdomain.com</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <Clock className="text-amber-500" />
-                <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Map */}
-          <div className="h-[400px] rounded-xl overflow-hidden shadow-lg">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5438771523025!2d100.56324707475226!3d13.745287297998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ0JzQzLjAiTiAxMDDCsDMzJzUyLjAiRQ!5e0!3m2!1sen!2sth!4v1620120000000!5m2!1sen!2sth"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
-        </div>
+    <div className="bg-[#2B3B75] text-white py-10 text-center font-sans">
+      <div className="mb-5">
+        <h1 className="text-2xl font-bold mb-5">KRAILERT</h1>
+        <p className="mb-2">ถนนสาธุประดิษฐ์ แขวงช่องนนทรี เขตยานนาวา กรุงเทพมหานคร 10120</p>
+        <p className="mb-5">095-564-9495, 088-838-1565</p>
       </div>
-    </footer>
+      <div className="flex justify-center gap-6">
+        <a href="#" className="text-white hover:text-gray-200">
+          <Facebook size={24} />
+        </a>
+        <a href="#" className="text-white hover:text-gray-200">
+          <MessageCircle size={24} />
+        </a>
+        <a href="#" className="text-white hover:text-gray-200">
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M21 8v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5Z"/>
+            <path d="m10 15 5-5"/>
+            <path d="m10 10 5 5"/>
+          </svg>
+        </a>
+        <a href="#" className="text-white hover:text-gray-200">
+          <Instagram size={24} />
+        </a>
+      </div>
+    </div>
   );
 };
 

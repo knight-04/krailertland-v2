@@ -7,6 +7,7 @@ import Footer from '../component/layout/footer/contact';
 import ScrollToTop from '../component/home/scroll/scrolltotop';
 import Timeline from '../component/home/scroll/scrolltimeline';
 import Blog from '../component/home/content/blog';
+import RegistrationForm from '../component/layout/navbar/modal/register'
 import { SearchProvider } from '../component/contexts/searchcontext';
 
 const HomePage = () => {
@@ -15,11 +16,9 @@ const HomePage = () => {
       <div className="absolute bg-blue-100" />
       <SearchProvider>
         <Navbar />
-        <Hero id="home" />
-        <FeaturedProperties id="properties" />
-        <FeatueredLocations id="location" />
-        <Timeline id="timeline"/>
         <Blog id="blog" />
+        <FeaturedProperties id="properties" />
+        <RegistrationForm />
         <ScrollToTop />
         <Footer />
       </SearchProvider>

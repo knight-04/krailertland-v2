@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap');
 
 
 .App {
@@ -52,3 +53,16 @@ body,
 .ant-card {
   font-family: 'Prompt', sans-serif !important;
 }
+
+.corinthia-regular {
+  font-family: "Corinthia", serif !important;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.corinthia-bold {
+  font-family: "Corinthia", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+

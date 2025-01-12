@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors: { 
+        baseolor: "#544E44"
+      },
       fontFamily: {
         sans: ['Anuphan', 'sans-serif'],
         sukhumvit: ['Sukhumvit Set', 'sans-serif'],

@@ -1,82 +1,65 @@
+import React, { useState } from 'react';
 
-const RegisterModal = ({ isOpen, onClose, formData, onChange, onSubmit }) => {
-    if (!isOpen) return null;
-  
-    return (
-      <div
-        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-40"
-        //onClick={onClose}
-      >
-        <div
-          className="bg-white rounded-lg w-full max-w-md mx-4 p-6"
-          onClick={e => e.stopPropagation()}
-        >
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">ลงทะเบียน</h2>
-            <button
-              onClick={onClose}
-              className="text-gray-500 hover:text-gray-700"
-            >
-              ✕
-            </button>
-          </div>
-  
-          <form onSubmit={onSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium">ชื่อ</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={onChange}
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                required
-              />
-            </div>
-  
-            <div className="space-y-2">
-              <label className="text-sm font-medium">อายุ</label>
-              <input
-                type="number"
-                name="age"
-                value={formData.age}
-                onChange={onChange}
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                required
-                min="1"
-              />
-            </div>
-  
-            <div className="space-y-2">
-              <label className="text-sm font-medium">แผนการซื้อบ้าน</label>
-              <select
-                name="plan"
-                value={formData.plan}
-                onChange={onChange}
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                required
-              >
-                <option value="" disabled>เลือกแผนการซื้อบ้าน</option>
-                <option value="1">1-2 เดือน</option>
-                <option value="2">3-6 เดือน</option>
-                <option value="3">1 ปีขึ้นไป</option>
-              </select>
-            </div>
-  
-            <div className="flex justify-end pt-4">
-              <button
-                type="submit"
-                className="px-6 py-2 bg-gradient-to-r from-yellow-600 to-yellow-500
-                hover:from-yellow-500 hover:to-yellow-400 text-white rounded-full
-                font-medium transition-colors"
-              >
-                ยืนยัน
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    );
+const RegistrationForm = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    lastName: '',
+    firstName: '',
+    phone: ''
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
   };
-  
-  export default RegisterModal;
+
+  return (
+    <div className='w-full bg-slate-900'>
+      <div className="w-full max-w-2xl mx-auto p-6 bg-slate-900">
+        <h1 className="text-2xl font-bold text-white mb-6 text-center">
+          ลงทะเบียนรับข้อมูลเพิ่มเติม
+        </h1>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* First Input Row */}
+            <input
+              type="text"
+              placeholder="กรุณากรอกชื่อของท่าน"
+              className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 "
+            />
+
+            <input
+              type="text"
+              placeholder="กรุณากรอกนามสกุลของท่าน"
+              className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 "
+            />
+
+            {/* Second Input Row */}
+            <input
+              type="email"
+              placeholder="กรุณากรอกอีเมลของท่าน"
+              className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 "
+            />
+
+            <input
+              type="tel"
+              placeholder="กรุณากรอกเบอร์โทรศัพท์ของท่าน"
+              className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 "
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full py-4 px-8 rounded-lg bg-white text-gray-800 font-medium hover:bg-gray-100  focus:ring-2 transition-all duration-300 transform hover:scale-110 text-lg hover:text-white hover:border hover:bg-transparent"
+          >
+            ลงทะเบียนรับข้อมูล
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default RegistrationForm;
