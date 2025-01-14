@@ -8,7 +8,7 @@ const FeaturedProperties = ({ id }) => {
 
   return (
     <section id={id} className="py-16 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto md:px-40">
         <div className="text-center mb-12">
           {/* <span className="text-amber-600 rounded-full font-semibold mb-4 block p-1">
             โครงการทั้งหมด
@@ -20,7 +20,7 @@ const FeaturedProperties = ({ id }) => {
 
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-20">
           {properties
             .filter(property => activeFilter === 'all' || property.type === activeFilter)
             .map(property => (

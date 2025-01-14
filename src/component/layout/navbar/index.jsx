@@ -1,16 +1,63 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Search, ChevronDown } from 'lucide-react';
+import { Menu, Search, ChevronDown, XIcon } from 'lucide-react';
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [textVisible, setTextVisible] = useState(true);
+
+  const menuItems = [
+    { title: 'เกี่ยวกับเรา', section: '#about' },
+    { title: 'โครงการ', section: '#properties' },
+    { title: 'กำลังดำเนินการ', section: '#project' },
+    { title: 'ลงทะเบียน', section: '#register' },
+    { title: 'ติดต่อเรา', section: '#contact' }
+  ];
 
   const slides = [
-    { url: '/image/Stock-Modern-House-In-Twilight-AdobeStock-368976934-copy.jpg', id: 1 },
-    { url: '/image/pngtree-d-rendering-of-a-cozy-living-room-in-a-house-or-picture-image_5591775.jpg', id: 2 },
-    { url: '/image/pngtree-d-rendering-of-a-scandinavian-farmhouse-living-room-with-classic-charm-image_13546375.png', id: 3 }
+    {
+      url: '/images/1 เปิดตัว/1.jpg',
+      id: 1,
+      text: "บ้านกลางเมืองที่ให้คุณใกล้ชิดธรรมชาติ เหนือระดับ อบอุ่น ปลอดภัย และ สบายใจ"
+    },
+    {
+      url: '/images/1 เปิดตัว/2.jpg',
+      id: 2,
+      text: "แรงบันดาลใจจากงานออกแบบสู่ความสำเร็จ สู่รสนิยมอันเหนือระดับ หล่อหลอมให้เกิดบ้านสุดแสนพิเศษ"
+    },
+    {
+      url: '/images/1 เปิดตัว/3.2.jpg',
+      id: 4,
+      text: "เอกสิทธิ์แห่งการใช้ชีวิตเหนือระดับ ที่ผ่านความใส่ใจในทุกรายละเอียด"
+    },
+    {
+      url: '/images/1 เปิดตัว/4.jpg',
+      id: 5,
+      text: "บ้านที่ออกแบบมาเพื่อคุณ ที่เป็นจุดเริ่มต้นถึงความสัมพันธ์ของคำว่า ครอบครัว"
+    },
+    {
+      url: '/images/1 เปิดตัว/5.jpg',
+      id: 6,
+      text: "เมื่อวิถีชีวิต การเวลา และประสบการณ์ ผสานออกมาเป็นโครงการบ้านที่ออกแบบมาเพื่อคุณ"
+    },
   ];
+
+  const handleScrollTo = (sectionId) => {
+    setIsMenuOpen(false);
+    const element = document.querySelector(sectionId);
+    if (element) {
+      const navHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,188 +69,226 @@ const LandingPage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Auto advance carousel
+  const handleSlideChange = (index) => {
+    if (isTransitioning || index === currentSlide) return;
+
+    setIsTransitioning(true);
+    setTextVisible(false);
+
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setTimeout(() => {
+        setTextVisible(true);
+        setIsTransitioning(false);
+      }, 800);
+    }, 500);
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      if (!isTransitioning) {
+        handleSlideChange((currentSlide + 1) % slides.length);
+      }
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [currentSlide, isTransitioning]);
 
   return (
     <div className="min-h-screen">
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
-        }`}>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
         {!isScrolled ? (
-          // Vertical layout before scroll
           <div className="container mx-auto px-6">
-            <div className="flex flex-col items-center pt-8">
-              {/* Logo */}
-              <div className="flex flex-col items-center mb-6">
-                <svg viewBox="0 0 50 50" className="h-8 w-8 text-white">
-                  <path
-                    d="M10 25 L25 10 L40 25 L25 40 Z"
-                    fill="currentColor"
+            <div className="md:flex md:flex-col md:items-center pt-8">
+              {/* Desktop Layout */}
+              <div className="hidden md:flex md:flex-col md:items-center">
+                <button
+                  onClick={() => handleScrollTo('#hero')}
+                  className="flex flex-col items-center mb-6"
+                >
+                  <img
+                    src='/images/Logo/Real/logo626.png'
+                    className="w-50 h-36 object-cover"
+                    alt="Logo"
                   />
-                </svg>
-                <span className="text-white text-sm tracking-wider mt-2">
-                  KRAI LERT
-                </span>
+                </button>
+
+                <div className="flex items-center space-x-12">
+                  {menuItems.map((item) => (
+                    <button
+                      key={item.title}
+                      onClick={() => handleScrollTo(item.section)}
+                      className="text-sm tracking-wider text-white hover:text-gray-200 relative group"
+                    >
+                      {item.title}
+                      <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              {/* Menu Items */}
-              <div className="hidden md:flex items-center space-x-12">
-                <a href="#" className="text-sm tracking-wider text-white hover:text-gray-200">
-                  ABOUT US
-                </a>
-                <a href="#" className="text-sm tracking-wider text-white hover:text-gray-200">
-                  OUR PROJECTS
-                </a>
-                <a href="#" className="text-sm tracking-wider text-white hover:text-gray-200">
-                  RML NEWS
-                </a>
+              {/* Mobile Layout */}
+              <div className="md:hidden flex items-center justify-between h-20">
+                <button
+                  onClick={() => handleScrollTo('#hero')}
+                  className="flex items-center"
+                >
+                  <img
+                    src='/images/Logo/Real/logo626.png'
+                    className="h-32 object-contain"
+                    alt="Logo"
+                  />
+                </button>
+                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white hover:text-gray-200 p-5">
+                  <Menu className="h-8 w-8" />
+                </button>
               </div>
-            </div>
-
-            {/* Actions - Fixed to top right */}
-            <div className="absolute top-8 right-6 flex items-center space-x-6">
-              <button className="text-white hover:text-gray-200">
-                <Search className="h-4 w-4" />
-              </button>
-              <div className="flex items-center space-x-1">
-                <span className="text-sm tracking-wider text-white">
-                  EN
-                </span>
-                <ChevronDown className="h-3 w-3 text-white" />
-              </div>
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white hover:text-gray-200"
-              >
-                <Menu className="h-5 w-5" />
-              </button>
             </div>
           </div>
         ) : (
-          // Horizontal layout after scroll
           <div className="container mx-auto px-6">
-            <div className="h-16 flex justify-between items-center">
-              {/* Left: Logo */}
-              <div className="flex items-center space-x-2">
-                <svg viewBox="0 0 50 50" className="h-6 w-6 text-blue-900">
-                  <path
-                    d="M10 25 L25 10 L40 25 L25 40 Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <span className="text-sm tracking-wider text-blue-900">
-                  KRAILERT LAND
-                </span>
-              </div>
-
-              {/* Center: Menu Items */}
-              <div className="hidden md:flex items-center space-x-12">
-                <a href="#" className="text-sm tracking-wider text-blue-900 hover:text-blue-700">
-                  ABOUT US
-                </a>
-                <a href="#" className="text-sm tracking-wider text-blue-900 hover:text-blue-700">
-                  OUR PROJECTS
-                </a>
-                <a href="#" className="text-sm tracking-wider text-blue-900 hover:text-blue-700">
-                  RML NEWS
-                </a>
-              </div>
-
-              {/* Right: Actions */}
-              <div className="flex items-center space-x-6">
-                <button className="text-blue-900 hover:text-blue-700">
-                  <Search className="h-4 w-4" />
-                </button>
-                <div className="flex items-center space-x-1">
-                  <span className="text-sm tracking-wider text-blue-900">
-                    EN
-                  </span>
-                  <ChevronDown className="h-3 w-3 text-blue-900" />
-                </div>
+            <div className="flex items-center justify-between h-16">
+              {/* Desktop Layout */}
+              <div className="hidden md:flex items-center flex-1">
                 <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="text-blue-900 hover:text-blue-700"
+                  onClick={() => handleScrollTo('#hero')}
+                  className="flex items-center space-x-2"
                 >
-                  <Menu className="h-5 w-5" />
+                  <img
+                    src='/images/Logo/Real/logo1-.png'
+                    className="w-auto h-10 object-cover"
+                    alt="Logo"
+                  />
+                </button>
+              </div>
+
+              <div className="hidden md:flex items-center space-x-12">
+                {menuItems.map((item) => (
+                  <button
+                    key={item.title}
+                    onClick={() => handleScrollTo(item.section)}
+                    className="text-sm tracking-wider text-blue-900 hover:text-blue-900 relative group"
+                  >
+                    {item.title}
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-900 transition-all duration-300 group-hover:w-full"></span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Mobile Layout */}
+              <div className="md:hidden flex items-center justify-between flex-1">
+                <button
+                  onClick={() => handleScrollTo('#hero')}
+                  className="flex items-center"
+                >
+                  <img
+                    src='/images/Logo/Real/logo1-.png'
+                    className="h-10 object-contain"
+                    alt="Logo"
+                  />
+                </button>
+                <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-blue-900 hover:text-blue-700 p-5">
+                  <Menu className="h-6 w-6 " />
                 </button>
               </div>
             </div>
           </div>
         )}
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Overlay and Panel */}
         {isMenuOpen && (
-          <div className={`md:hidden ${isScrolled ? 'bg-white' : 'bg-black bg-opacity-90'
-            }`}>
-            <div className="px-4 py-6 space-y-4">
-              <a href="#" className={`block text-sm tracking-wider ${isScrolled ? 'text-blue-900' : 'text-white'
-                }`}>ABOUT US</a>
-              <a href="#" className={`block text-sm tracking-wider ${isScrolled ? 'text-blue-900' : 'text-white'
-                }`}>OUR PROJECTS</a>
-              <a href="#" className={`block text-sm tracking-wider ${isScrolled ? 'text-blue-900' : 'text-white'
-                }`}>RML NEWS</a>
+          <>
+            {/* Overlay */}
+            <div 
+              className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            
+            {/* Menu Panel */}
+            <div className="md:hidden fixed top-0 right-0 w-1/2 h-screen bg-white shadow-lg z-50">
+              <div className="flex flex-col h-full">
+                {/* Mobile Menu Header */}
+                <div className="flex justify-end items-center p-6 border-b">
+                  <button 
+                    onClick={() => setIsMenuOpen(false)}
+                    className="p-2 text-gray-800 hover:text-gray-600"
+                  >
+                    <XIcon className="h-6 w-6" />
+                  </button>
+                </div>
+
+                {/* Mobile Menu Items */}
+                <div className="flex-1 flex flex-col py-8">
+                  {menuItems.map((item) => (
+                    <button
+                      key={item.title}
+                      onClick={() => handleScrollTo(item.section)}
+                      className="py-4 px-6 text-base text-gray-800 hover:bg-gray-50 text-left relative group"
+                    >
+                      {item.title}
+                      <span className="absolute left-6 bottom-3 w-0 h-0.5 bg-gray-800 transition-all duration-300 group-hover:w-16"></span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </nav>
 
       {/* Hero Section */}
-      <div className="relative h-screen overflow-hidden">
-        {/* Image Carousel */}
+      <section id="hero" className="relative h-screen overflow-hidden">
         <div className="relative h-full">
           {slides.map((slide, index) => (
             <div
-              key={index}
-              className={`absolute inset-0 transform transition-transform duration-1000 ease-out ${index === currentSlide
-                ? 'translate-x-0'
-                : index < currentSlide
-                  ? '-translate-x-full'
-                  : 'translate-x-full'
-                }`}
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-[2500ms] ease-out ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                zIndex: index === currentSlide ? 2 : 1,
+              }}
             >
               <img
                 src={slide.url}
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-black/50 transition-opacity duration-[2500ms]" />
             </div>
           ))}
         </div>
 
         {/* Carousel Controls */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
           {slides.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-2 h-2 rounded-full transition-colors duration-300 ${currentSlide === index ? 'bg-white' : 'bg-white/50'
-                }`}
+              onClick={() => handleSlideChange(index)}
+              disabled={isTransitioning}
+              className={`w-2 h-2 rounded-full transition-all duration-300 
+                ${currentSlide === index ? 'bg-white w-4' : 'bg-white/50'}
+                ${isTransitioning ? 'cursor-not-allowed' : 'cursor-pointer hover:bg-white/70'}
+              `}
             />
           ))}
         </div>
 
         {/* Content Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-30 ">
-          <div className="h-full flex items-center justify-center text-center">
-            <div className='mt-80'>
-              <h1 className="text-7xl text-white font-light tracking-wider mb-2">
-                LUXURY
-              </h1>
-              <p className="text-3xl text-white italic font-light tracking-wider">
-                Reimagined
+        <div className="absolute inset-x-0 bottom-60 z-10">
+          <div className="container mx-auto px-4 mb-20">
+            <div
+              className={`transform transition-all duration-1000 ease-out max-w-4xl mx-auto
+                ${textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
+              `}
+            >
+              <p className="text-xl md:text-3xl text-white font-light tracking-wider leading-relaxed text-center">
+                {slides[currentSlide].text}
               </p>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Additional content will go here */}
+      </section>
     </div>
   );
 };
