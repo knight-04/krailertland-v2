@@ -21,7 +21,7 @@ export const properties = [
   {
     id: 1,
     featured: true,
-    status: "GRAND OPENING",
+    status: "SOLD OUT",
     address: "145 รังสิต อำเภอเมือง ปทุมธานี",
     title: "Hillton",
     beds: 1,
