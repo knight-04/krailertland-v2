@@ -3,7 +3,9 @@ import React from 'react';
 const HeroSection = ({id}) => {
   return (
     <>
-    <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet"/>
+   <link href="https://fonts.googleapis.com/css2?family=Hurricane&display=swap" rel="stylesheet"/>
+   <link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap" rel="stylesheet"/>
+
       
       <section id={id}>
         <div className="min-h-[30rem] bg-[#544D44] flex flex-col items-center justify-center text-center px-4">
@@ -11,7 +13,7 @@ const HeroSection = ({id}) => {
             รู้จัก ไกรเลิศ
           </h2>
 
-          <h1 className="text-white font-light text-4xl md:text-7xl mb-6" style={{ fontFamily: "'Birthstone', cursive" }}>
+          <h1 className="text-white font-light text-4xl md:text-7xl mb-6" style={{ fontFamily: "'Hurricane', serif" }}>
             Home is where the Heart is
           </h1>
 

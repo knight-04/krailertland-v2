@@ -31,9 +31,12 @@ const Footer = ({ id }) => {
 
   return (
     <section id={id}>
+      <link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap" rel="stylesheet"/>
       <div className="bg-[#1B2848] text-white py-10 text-center font-sans">
         <div className="mb-5">
-          <h1 className="text-2xl font-bold mb-5">KRAILERT</h1>
+          <h1 className="text-5xl font-bold mb-3" style={{ fontFamily: "'The Nautigal', serif", fontWeight: 100 }}>
+            Krailert Land
+          </h1>
           <p className="mb-2">ถนนสาธุประดิษฐ์ แขวงช่องนนทรี เขตยานนาวา กรุงเทพมหานคร 10120</p>
           <p className="mb-5">095-564-9495, 088-838-1565</p>
         </div>

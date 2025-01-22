@@ -99,19 +99,15 @@ const LandingPage = () => {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
         {!isScrolled ? (
           <div className="container mx-auto px-6">
-            <div className="md:flex md:flex-col md:items-center pt-8">
+            <div className="md:flex md:flex-col md:items-center">
               {/* Desktop Layout */}
               <div className="hidden md:flex md:flex-col md:items-center">
-                <button
-                  onClick={() => handleScrollTo('#hero')}
-                  className="flex flex-col items-center mb-6"
-                >
                   <img
                     src='/images/Logo/Real/logo626.png'
-                    className="w-50 h-36 object-cover"
+                    className="w-24 h-24 object-cover mb-6"
                     alt="Logo"
                   />
-                </button>
+              
 
                 <div className="flex items-center space-x-12">
                   {menuItems.map((item) => (
@@ -156,7 +152,7 @@ const LandingPage = () => {
                 >
                   <img
                     src='/images/Logo/Real/logo1-.png'
-                    className="w-auto h-10 object-cover"
+                    className="w-auto h-7 object-cover"
                     alt="Logo"
                   />
                 </button>
@@ -254,7 +250,7 @@ const LandingPage = () => {
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-black/50 transition-opacity duration-[2500ms]" />
+              <div className="absolute inset-0  transition-opacity duration-[2500ms]" /> {/* bg-black/50 */}
             </div>
           ))}
         </div>
@@ -275,7 +271,7 @@ const LandingPage = () => {
         </div>
 
         {/* Content Overlay */}
-        <div className="absolute inset-x-0 bottom-60 z-10">
+        <div className="absolute inset-x-0 bottom-3 z-10">
           <div className="container mx-auto px-4 mb-20">
             <div
               className={`transform transition-all duration-1000 ease-out max-w-4xl mx-auto

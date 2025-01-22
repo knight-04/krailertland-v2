@@ -72,7 +72,7 @@ const PropertyCard = ({ property }) => {
         </div>
 
         <div className="absolute top-0 left-0">
-          <div className="bg-[#8B1C3D] text-white py-1.5 px-8 translate-y-3">
+          <div className="bg-[#F15882] text-white py-1.5 px-8 translate-y-3">
             {status}
           </div>
         </div>
@@ -81,7 +81,8 @@ const PropertyCard = ({ property }) => {
       <div className="p-6">
         <h2 className="text-blue-900 text-2xl font-bold mb-2">{title}</h2>
         <div className="text-lg text-navy-900">
-          เริ่มต้นที่ {price} ล้านบาท
+          {/* เริ่มต้นที่ {price} ล้านบาท */}
+          {price}
         </div>
         <div className="block relative h-0.5 my-7 bg-black/30 rounded-full" />
         <p className="text-gray-500 text-sm leading-relaxed">
