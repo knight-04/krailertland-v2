@@ -42,6 +42,11 @@ const LandingPage = () => {
       id: 6,
       text: "เมื่อวิถีชีวิต การเวลา และประสบการณ์ ผสานออกมาเป็นโครงการบ้านที่ออกแบบมาเพื่อคุณ"
     },
+    {
+      url: '/images/1 เปิดตัว/6.jpg',
+      id: 7,
+      text: "บ้านที่รองรับทุก Generations เหมาะกับสังคมเมือง บนทำเลศักยภาพ"
+    },
   ];
 
   const handleScrollTo = (sectionId) => {
@@ -102,19 +107,19 @@ const LandingPage = () => {
             <div className="md:flex md:flex-col md:items-center">
               {/* Desktop Layout */}
               <div className="hidden md:flex md:flex-col md:items-center">
-                  <img
-                    src='/images/Logo/Real/logo626.png'
-                    className="w-24 h-24 object-cover mb-6"
-                    alt="Logo"
-                  />
-              
+                <img
+                  src='/images/Logo/Real/logo626.png'
+                  className="w-24 h-24 object-cover mb-6 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+                  alt="Logo"
+                />
+
 
                 <div className="flex items-center space-x-12">
                   {menuItems.map((item) => (
                     <button
                       key={item.title}
                       onClick={() => handleScrollTo(item.section)}
-                      className="text-sm tracking-wider text-white hover:text-gray-200 relative group"
+                      className="text-md tracking-wider text-white hover:text-gray-200 relative group drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
                     >
                       {item.title}
                       <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
@@ -125,16 +130,13 @@ const LandingPage = () => {
 
               {/* Mobile Layout */}
               <div className="md:hidden flex items-center justify-between h-20">
-                <button
-                  onClick={() => handleScrollTo('#hero')}
-                  className="flex items-center"
-                >
-                  <img
-                    src='/images/Logo/Real/logo626.png'
-                    className="h-32 object-contain"
-                    alt="Logo"
-                  />
-                </button>
+
+                <img
+                  src='/images/Logo/Real/logo626.png'
+                  className="h-20 object-contain drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+                  alt="Logo"
+                />
+
                 <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white hover:text-gray-200 p-5">
                   <Menu className="h-8 w-8" />
                 </button>
@@ -179,7 +181,7 @@ const LandingPage = () => {
                 >
                   <img
                     src='/images/Logo/Real/logo1-.png'
-                    className="h-10 object-contain"
+                    className="h-7 object-contain"
                     alt="Logo"
                   />
                 </button>
@@ -195,17 +197,17 @@ const LandingPage = () => {
         {isMenuOpen && (
           <>
             {/* Overlay */}
-            <div 
+            <div
               className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
               onClick={() => setIsMenuOpen(false)}
             />
-            
+
             {/* Menu Panel */}
             <div className="md:hidden fixed top-0 right-0 w-1/2 h-screen bg-white shadow-lg z-50">
               <div className="flex flex-col h-full">
                 {/* Mobile Menu Header */}
                 <div className="flex justify-end items-center p-6 border-b">
-                  <button 
+                  <button
                     onClick={() => setIsMenuOpen(false)}
                     className="p-2 text-gray-800 hover:text-gray-600"
                   >
@@ -238,9 +240,8 @@ const LandingPage = () => {
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-[2500ms] ease-out ${
-                index === currentSlide ? 'opacity-100' : 'opacity-0'
-              }`}
+              className={`absolute inset-0 transition-opacity duration-[2500ms] ease-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                }`}
               style={{
                 zIndex: index === currentSlide ? 2 : 1,
               }}
@@ -250,7 +251,7 @@ const LandingPage = () => {
                 alt={`Slide ${index + 1}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0  transition-opacity duration-[2500ms]" /> {/* bg-black/50 */}
+              <div className="absolute inset-0 bg-black/20 transition-opacity duration-[2500ms]" />
             </div>
           ))}
         </div>
@@ -278,7 +279,7 @@ const LandingPage = () => {
                 ${textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}
               `}
             >
-              <p className="text-xl md:text-3xl text-white font-light tracking-wider leading-relaxed text-center">
+              <p className="text-xl md:text-3xl text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] font-bold tracking-wider leading-relaxed text-center">
                 {slides[currentSlide].text}
               </p>
             </div>

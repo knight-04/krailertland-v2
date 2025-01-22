@@ -3,11 +3,11 @@ import location2 from '../../../public/image/1588579761966-44037829_285474768844
 import location3 from '../../../public/image/2566-8-18-Supalai-Park-Ville-Khao-Ngoo-Clubhouse-M.jpg';
 import location4 from '../../../public/image/Astera-Pride-พระราม-2-1024x685.jpg';
 import Logo from '../../../public/image/Screenshot 2567-12-25 at 21.37.16.png';
-import hillton1 from '../../../public/images/3โครงการ/hampton/2.jpg';
-import hillton2 from '../../../public/images/3โครงการ/hampton/3.jpg';
+import hillton1 from '../../../public/images/3โครงการ/hillton/3.png';
+import hillton2 from '../../../public/images/3โครงการ/hillton/4_1.jpg';
 import hillton3 from '../../../public/images/3โครงการ/hillton/310540111_194787002934505_7212663915766555420_n.jpg';
 import hillton4 from '../../../public/images/3โครงการ/hillton/310593283_194787016267837_4187648500976461274_n.jpg';
-import hillton5 from '../../../public/images/3โครงการ/hampton/5.jpg';
+import hillton5 from '../../../public/images/3โครงการ/hillton/5.png';
 
 import hampton1 from '../../../public/images/3โครงการ/hampton/1.jpg';
 import hampton2 from '../../../public/images/3โครงการ/hampton/2.jpg';
