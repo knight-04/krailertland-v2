@@ -31,7 +31,7 @@ const Footer = ({ id }) => {
 
   return (
     <section id={id}>
-      <link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap" rel="stylesheet" />
       <div className="bg-[#1B2848] text-white py-10 text-center font-sans">
         <div className="mb-5">
           <h1 className="text-5xl font-bold mb-3" style={{ fontFamily: "'The Nautigal', serif", fontWeight: 100 }}>
@@ -41,10 +41,11 @@ const Footer = ({ id }) => {
           <p className="mb-5">095-564-9495, 088-838-1565</p>
         </div>
         <div className="flex justify-center gap-6">
-          <a href="" className="text-white hover:text-gray-200 flex flex-col items-center">
+          <a href="https://www.facebook.com/share/1Wv712GA6U/?mibextid=wwXIfr"
+            className="text-white hover:text-gray-200 flex flex-col items-center">
             <Facebook size={24} />
           </a>
-          <a href="" className="text-white hover:text-gray-200 flex flex-col items-center">
+          <a href="https://lin.ee/6Z0Elh7" className="text-white hover:text-gray-200 flex flex-col items-center">
             <LineIcon />
           </a>
           <a href="" className="text-white hover:text-gray-200 flex flex-col items-center">
