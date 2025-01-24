@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 const RegistrationForm = ({ id }) => {
   const [formData, setFormData] = useState({
     email: '',
-    lastName: '',
-    firstName: '',
-    phone: ''
+    name: '',
+    phone: '',
+    plan: ''
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
-
-  const GOOGLE_SCRIPTS_URL = 'https://script.google.com/macros/s/AKfycbyLEJRc_E4pCB91Xm13doCQEsS3-hKCbYMft23W2LWmYkBKQMjn_KJCe0CgopYLW6o/exec';
-
+ 
+  const GOOGLE_SCRIPTS_URL = 'https://script.google.com/macros/s/AKfycbz6WADwLxtsehOvmT4pMT9WCw-gpTf5QBzVrmZfMvROAViG8TgECGuz-E4uzLwwkeF-/exec';
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -20,45 +20,36 @@ const RegistrationForm = ({ id }) => {
       [name]: value
     }));
   };
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
-    
+ 
     try {
-      // ใช้เฉพาะ GET method
-      const urlParams = new URLSearchParams({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone
-      }).toString();
-
+      const urlParams = new URLSearchParams(formData).toString();
       const finalUrl = `${GOOGLE_SCRIPTS_URL}?${urlParams}`;
       
       await fetch(finalUrl, {
         method: 'GET',
         mode: 'no-cors',
       });
-
-      // เมื่อส่งข้อมูลสำเร็จ
+ 
       setIsSuccess(true);
       setFormData({
         email: '',
-        lastName: '',
-        firstName: '',
-        phone: ''
+        name: '',
+        phone: '',
+        plan: ''
       });
-      
     } catch (error) {
-      console.error('Error submitting form:', error);
-      setError('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
+      console.error('Error:', error);
+      setError('เกิดข้อผิดพลาด กรุณาลองใหม่');
     } finally {
       setIsLoading(false);
     }
   };
-
+ 
   return (
     <section id={id}>
       <div className="w-full bg-[#1B2848]">
@@ -66,39 +57,18 @@ const RegistrationForm = ({ id }) => {
           <h1 className="text-xl font-bold text-white mb-6 text-center">
             ลงทะเบียนรับข้อมูลเพิ่มเติม
           </h1>
-
+ 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 type="text"
-                name="firstName"
-                value={formData.firstName}
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
                 placeholder="กรุณากรอกชื่อของท่าน"
                 required
                 className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2"
               />
-
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                placeholder="กรุณากรอกนามสกุลของท่าน"
-                required
-                className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2"
-              />
-
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="กรุณากรอกอีเมลของท่าน"
-                required
-                className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2"
-              />
-
               <input
                 type="tel"
                 name="phone"
@@ -108,14 +78,32 @@ const RegistrationForm = ({ id }) => {
                 required
                 className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2"
               />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="กรุณากรอกอีเมลของท่าน"
+                required
+                className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2"
+              />
+              <select
+                name="plan"
+                value={formData.plan}
+                onChange={handleChange}
+                required 
+                className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2"
+              >
+                <option value="">แผนการซื้อบ้าน</option>
+                <option value="1-2 เดือน">1-2 เดือน</option>
+                <option value="1 ปีขึ้นไป">1 ปีขึ้นไป</option>
+              </select>
             </div>
-
+ 
             {error && (
-              <div className="text-red-500 text-center">
-                {error}
-              </div>
+              <div className="text-red-500 text-center">{error}</div>
             )}
-
+ 
             <button
               type="submit"
               disabled={isLoading}
@@ -130,7 +118,7 @@ const RegistrationForm = ({ id }) => {
                 'ลงทะเบียนรับข้อมูล'
               )}
             </button>
-
+ 
             {isSuccess && (
               <div className="flex items-center text-green-500 justify-center mt-4">
                 <svg
@@ -154,6 +142,6 @@ const RegistrationForm = ({ id }) => {
       </div>
     </section>
   );
-};
-
-export default RegistrationForm;
+ };
+ 
+ export default RegistrationForm;

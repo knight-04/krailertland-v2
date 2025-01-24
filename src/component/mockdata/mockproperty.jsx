@@ -8,12 +8,14 @@ import hillton2 from '../../../public/images/3โครงการ/hillton/4_1.
 import hillton3 from '../../../public/images/3โครงการ/hillton/310540111_194787002934505_7212663915766555420_n.jpg';
 import hillton4 from '../../../public/images/3โครงการ/hillton/310593283_194787016267837_4187648500976461274_n.jpg';
 import hillton5 from '../../../public/images/3โครงการ/hillton/5.png';
+import hillton6 from '../../../public/images/3โครงการ/220709_0.jpg';
 
 import hampton1 from '../../../public/images/3โครงการ/hampton/1.jpg';
 import hampton2 from '../../../public/images/3โครงการ/hampton/2.jpg';
 import hampton3 from '../../../public/images/3โครงการ/hampton/3.jpg';
 import hampton4 from '../../../public/images/3โครงการ/hampton/4.jpg';
 import hampton5 from '../../../public/images/3โครงการ/hampton/5.jpg';
+import hampton6 from '../../../public/images/3โครงการ/220708_0.jpg';
 
 
 
@@ -23,7 +25,7 @@ export const properties = [
     id: 1,
     status: "SOLD OUT",
     title: "Hillton",
-    image: [hillton3,hillton4,hillton1,hillton2,hillton5],
+    image: [hillton3,hillton4,hillton1,hillton2,hillton5,hillton6],
     price: 'ปิดโครงการ',
     description: "บ้านเดี่ยวสุดหรูใจกลางราชบุรี เอกสิทธิ์ แห่งการใช้ชีวิตเหนือระดับ 24หลัง หลังจากไกรเลิศ พร้อมบรรยากาศ โครงการวิวภูเขา บนถนนเจดีย์หัก"
   },
@@ -31,7 +33,7 @@ export const properties = [
     id: 2,
     status: "NEW PROJECT",
     title: "Hampton",
-    image: [hampton1,hampton5,hampton3,hampton4,hampton2],
+    image: [hampton1,hampton5,hampton3,hampton4,hampton2,hampton6],
     price: 'เริ่มต้นที่ 2.79-3.99 ล้านบาท',
     description: "เหนือกว่าด้วยการออกแบบทุกองศาของ การอยู่อาศัย เพิ่มพื้นที่ที่เติมเต็ม ชีวิตดีๆ ในแบบของคุณกับบ้านเดี่ยว บ้านแฝด และ บ้านอิสระ ใจกลางเมืองราชบุรี ติด ถนนเพชรเกษม"
 
