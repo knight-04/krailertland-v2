@@ -1,8 +1,4 @@
-import location1 from '../../../public/image/DDproperty-Thailand-Property-Market-Outllok-2024-cover-article-1.jpg';
-import location2 from '../../../public/image/1588579761966-44037829_285474768844736_7681322402126495744_o.webp';
-import location3 from '../../../public/image/2566-8-18-Supalai-Park-Ville-Khao-Ngoo-Clubhouse-M.jpg';
-import location4 from '../../../public/image/Astera-Pride-พระราม-2-1024x685.jpg';
-import Logo from '../../../public/image/Screenshot 2567-12-25 at 21.37.16.png';
+
 import hillton1 from '../../../public/images/3โครงการ/hillton/3.png';
 import hillton2 from '../../../public/images/3โครงการ/hillton/4_1.jpg';
 import hillton3 from '../../../public/images/3โครงการ/hillton/310540111_194787002934505_7212663915766555420_n.jpg';
@@ -17,15 +13,45 @@ import hampton4 from '../../../public/images/3โครงการ/hampton/4.jp
 import hampton5 from '../../../public/images/3โครงการ/hampton/5.jpg';
 import hampton6 from '../../../public/images/3โครงการ/220708_0.jpg';
 
-
-
+export const slides = [
+  {
+    url: '/images/1 เปิดตัว/1.jpg',
+    id: 1,
+    text: "บ้านกลางเมืองที่ให้คุณใกล้ชิดธรรมชาติ เหนือระดับ อบอุ่น ปลอดภัย และ สบายใจ"
+  },
+  {
+    url: '/images/1 เปิดตัว/2.jpg',
+    id: 2,
+    text: "แรงบันดาลใจจากงานออกแบบสู่ความสำเร็จ สู่รสนิยมอันเหนือระดับ หล่อหลอมให้เกิดบ้านสุดแสนพิเศษ"
+  },
+  {
+    url: '/images/1 เปิดตัว/3.2.jpg',
+    id: 4,
+    text: "เอกสิทธิ์แห่งการใช้ชีวิตเหนือระดับ ที่ผ่านความใส่ใจในทุกรายละเอียด"
+  },
+  {
+    url: '/images/1 เปิดตัว/4.jpg',
+    id: 5,
+    text: "บ้านที่ออกแบบมาเพื่อคุณ ที่เป็นจุดเริ่มต้นถึงความสัมพันธ์ของคำว่า ครอบครัว"
+  },
+  {
+    url: '/images/1 เปิดตัว/5.jpg',
+    id: 6,
+    text: "เมื่อวิถีชีวิต การเวลา และประสบการณ์ ผสานออกมาเป็นโครงการบ้านที่ออกแบบมาเพื่อคุณ"
+  },
+  {
+    url: '/images/1 เปิดตัว/6.jpg',
+    id: 7,
+    text: "บ้านที่รองรับทุก Generations เหมาะกับสังคมเมือง บนทำเลศักยภาพ"
+  },
+];
 
 export const properties = [
   {
     id: 1,
     status: "SOLD OUT",
     title: "Hillton",
-    image: [hillton3,hillton4,hillton1,hillton2,hillton5,hillton6],
+    image: [hillton3, hillton4, hillton1, hillton2, hillton5, hillton6],
     price: 'ปิดโครงการ',
     description: "บ้านเดี่ยวสุดหรูใจกลางราชบุรี เอกสิทธิ์ แห่งการใช้ชีวิตเหนือระดับ 24หลัง หลังจากไกรเลิศ พร้อมบรรยากาศ โครงการวิวภูเขา บนถนนเจดีย์หัก"
   },
@@ -33,135 +59,61 @@ export const properties = [
     id: 2,
     status: "NEW PROJECT",
     title: "Hampton",
-    image: [hampton1,hampton5,hampton3,hampton4,hampton2,hampton6],
+    image: [hampton1, hampton5, hampton3, hampton4, hampton2, hampton6],
     price: 'เริ่มต้นที่ 2.79-3.99 ล้านบาท',
     description: "เหนือกว่าด้วยการออกแบบทุกองศาของ การอยู่อาศัย เพิ่มพื้นที่ที่เติมเต็ม ชีวิตดีๆ ในแบบของคุณกับบ้านเดี่ยว บ้านแฝด และ บ้านอิสระ ใจกลางเมืองราชบุรี ติด ถนนเพชรเกษม"
 
   },
-  // {
-  //   id: 3,
-  //   featured: true,
-  //   status: "Available",
-  //   address: "5/8 สุขาภิบาล แยก10 สายไหม",
-  //   title: "เคหะพรพระร่วงฯ",
-  //   beds: 2,
-  //   baths: 1,
-  //   sqft: 1529,
-  //   image: house3,
-  //   price: '31.2',
-  //   type: "villa",
-  //   description: "บ้านเดี่ยวสุดหรูใจกลางบางแสน เอกสิทธิ์แห่งการใช้ชีวิตเหนือระดับ เพียง 41 หลังจากมณีรินทร์ พร้อมบรรยากาศโครงการที่ร่มรื่น บนถนนข้าวหลาม บางแสน"
-
-  // }
 ];
 
-export const locations = [
-  {
-    image: location1,
-    status: 'พร้อมเข้าอยู่',
-    type: 'บ้านเดี่ยว',
-    location: 'รังสิต',
-    price: '4.69',
 
+export const houseData = {
+  single: {
+    title: 'King บ้านเดี่ยว 2 ชั้น',
+    features:
+    {
+      bedroom: '4 ห้องนอน',
+      bathroom: '3 ห้องน้ำ',
+      garage: '2 ที่จอดรถ',
+      kitchen: '1 ห้องครัว',
+      area: 'เนื้อที่ 57 - 75 ตร.ว.',
+      useable: 'พื้นที่ใช้สอย 170 ตร.ม.',
+    },
+    house: [
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/บ้านเดี่ยว 2 ชั้น KING/King.jpg', },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/10.jpg', },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/11.jpg', },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/12.jpg', },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/13.jpg', },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/14.jpg', },
+    ],
+    plan: [
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/บ้านเดี่ยว 2 ชั้น KING/King1.jpg' },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/บ้านเดี่ยว 2 ชั้น KING/King2.jpg' }
+    ]
   },
-  {
-    image: location2,
-    status: 'โครงการใหม่',
-    type: 'บ้านเดี่ยว',
-    location: 'ดอนเมือง',
-    price: '13',
-
-  },
-  {
-    image: location3,
-    status: 'พร้อมเข้าอยู่',
-    logo: Logo,
-    type: 'วิลล่า',
-    location: 'ลาดพร้าว',
-    price: '16.9',
-
-  },
-  {
-    image: location4,
-    status: 'โครงการใหม่',
-    logo: Logo,
-    type: 'อาคารพาณิชย์',
-    location: 'สายไหไม',
-    price: '40',
-
+  double: {
+    title: 'Queen บ้านแฝด 2 ชั้น',
+    features:
+    {
+      bedroom: '4 ห้องนอน',
+      bathroom: '3 ห้องน้ำ',
+      garage: '2 ที่จอดรถ',
+      kitchen: '1 ห้องครัว',
+      area: 'เนื้อที่ 44 - 74 ตร.ว.',
+      useable: 'พื้นที่ใช้สอย 160 ตร.ม.',
+    },
+    house: [
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/บ้านแฝด 2 ชั้น QUEEN/Queen.jpg', },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/10.jpg', },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/11.jpg', },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/12.jpg', },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/13.jpg', },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/14.jpg', },
+    ],
+    plan: [
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/บ้านแฝด 2 ชั้น QUEEN/Queen1.jpg', id: 2 },
+      { url: '/images/4 โครงการที่ดำเนินการอยู่/hampton/บ้านแฝด 2 ชั้น QUEEN/Queen2.jpg', id: 3 }
+    ]
   }
-];
-
-export const timelineData = [
-  {
-    year: '2560 (ปีที่ 1)',
-    projects: [
-      {
-        name: 'โครงการบ้านรุ่ง สบทอง',
-        value: '11,000,000'
-      },
-      {
-        name: 'โครงการบ้านรุ่ง ท่าช้าง',
-        value: '201,000,000'
-      }
-    ]
-  },
-  {
-    year: '2563 (ปีที่ 3)',
-    projects: [
-      {
-        name: 'โครงการบ้านรุ่ง แสนสุข',
-        value: '64,000,000'
-      },
-      {
-        name: 'โครงการบ้านรุ่ง นางตะเคียน',
-        value: '76,000,000'
-      }
-    ]
-  },
-  {
-    year: '2564 (ปีที่ 4)',
-    projects: [
-      {
-        name: 'โครงการบ้านรุ่ง เบญจมาศ 1',
-        value: '48,000,000'
-      },
-      {
-        name: 'โครงการบ้านรุ่ง เบญจมาศ 2',
-        value: '206,000,000'
-      }
-    ]
-  },
-  {
-    year: '2565 (ปีที่ 5)',
-    projects: [
-      {
-        name: 'โครงการบ้านรุ่ง เกษตรสาย 1',
-        value: '61,000,000'
-      },
-      {
-        name: 'โครงการบ้านรุ่ง เกษตร - ทางเกวียน',
-        value: '64,000,000'
-      }
-    ]
-  },
-  {
-    year: '2566 (ปีที่ 6)',
-    projects: [
-      {
-        name: 'โครงการบ้านรุ่ง เกษตรสาย 2',
-        value: '53,000,000'
-      },
-      {
-        name: 'โครงการบ้านรุ่ง เบญจมาศ 3',
-        value: '227,000,000'
-      },
-    ]
-  },
-  {
-    year: '2566-2567 (ปีที่ 7)',
-    highlight: 'NEW BRAND',
-    title: 'The Quality จันทบุรี',
-    value: '297,000,000'
-  }
-];
+};

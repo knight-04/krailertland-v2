@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Search, ChevronDown, XIcon } from 'lucide-react';
+import { Menu, XIcon } from 'lucide-react';
+import { slides } from '../../mockdata/mockproperty'
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,38 +17,7 @@ const LandingPage = () => {
     { title: 'ติดต่อเรา', section: '#contact' }
   ];
 
-  const slides = [
-    {
-      url: '/images/1 เปิดตัว/1.jpg',
-      id: 1,
-      text: "บ้านกลางเมืองที่ให้คุณใกล้ชิดธรรมชาติ เหนือระดับ อบอุ่น ปลอดภัย และ สบายใจ"
-    },
-    {
-      url: '/images/1 เปิดตัว/2.jpg',
-      id: 2,
-      text: "แรงบันดาลใจจากงานออกแบบสู่ความสำเร็จ สู่รสนิยมอันเหนือระดับ หล่อหลอมให้เกิดบ้านสุดแสนพิเศษ"
-    },
-    {
-      url: '/images/1 เปิดตัว/3.2.jpg',
-      id: 4,
-      text: "เอกสิทธิ์แห่งการใช้ชีวิตเหนือระดับ ที่ผ่านความใส่ใจในทุกรายละเอียด"
-    },
-    {
-      url: '/images/1 เปิดตัว/4.jpg',
-      id: 5,
-      text: "บ้านที่ออกแบบมาเพื่อคุณ ที่เป็นจุดเริ่มต้นถึงความสัมพันธ์ของคำว่า ครอบครัว"
-    },
-    {
-      url: '/images/1 เปิดตัว/5.jpg',
-      id: 6,
-      text: "เมื่อวิถีชีวิต การเวลา และประสบการณ์ ผสานออกมาเป็นโครงการบ้านที่ออกแบบมาเพื่อคุณ"
-    },
-    {
-      url: '/images/1 เปิดตัว/6.jpg',
-      id: 7,
-      text: "บ้านที่รองรับทุก Generations เหมาะกับสังคมเมือง บนทำเลศักยภาพ"
-    },
-  ];
+
 
   const handleScrollTo = (sectionId) => {
     setIsMenuOpen(false);

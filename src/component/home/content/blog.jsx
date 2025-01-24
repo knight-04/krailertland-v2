@@ -20,10 +20,6 @@ const HeroSection = ({id}) => {
           <p className="text-white font-light text-lg mb-8 max-w-2xl">
             "บ้านให้ความสุข" เพราะเราเชื่อว่าจุดเริ่มต้นสำคัญของความสุขคือครอบครัว และบ้านคือจุดเริ่มต้นของการสร้างครอบครัว
           </p>
-
-          {/* <button className="px-8 py-3 border border-white text-white rounded-full hover:bg-white hover:text-neutral-800 transition-colors duration-300">
-            ดูเพิ่มเติม
-          </button> */}
         </div>
       </section>
     </>

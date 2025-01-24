@@ -10,9 +10,9 @@ const RegistrationForm = ({ id }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
- 
+
   const GOOGLE_SCRIPTS_URL = 'https://script.google.com/macros/s/AKfycbz6WADwLxtsehOvmT4pMT9WCw-gpTf5QBzVrmZfMvROAViG8TgECGuz-E4uzLwwkeF-/exec';
- 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -20,21 +20,21 @@ const RegistrationForm = ({ id }) => {
       [name]: value
     }));
   };
- 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
- 
+
     try {
       const urlParams = new URLSearchParams(formData).toString();
       const finalUrl = `${GOOGLE_SCRIPTS_URL}?${urlParams}`;
-      
+
       await fetch(finalUrl, {
         method: 'GET',
         mode: 'no-cors',
       });
- 
+
       setIsSuccess(true);
       setFormData({
         email: '',
@@ -49,15 +49,15 @@ const RegistrationForm = ({ id }) => {
       setIsLoading(false);
     }
   };
- 
+
   return (
     <section id={id}>
       <div className="w-full bg-[#1B2848]">
         <div className="w-full max-w-2xl mx-auto p-6 bg-[#1B2848]">
           <h1 className="text-xl font-bold text-white mb-6 text-center">
-            ลงทะเบียนรับข้อมูลเพิ่มเติม
+            ลงทะเบียนรับสิทธิพิเศษ รับข้อมูล
           </h1>
- 
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
@@ -91,7 +91,7 @@ const RegistrationForm = ({ id }) => {
                 name="plan"
                 value={formData.plan}
                 onChange={handleChange}
-                required 
+                required
                 className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2"
               >
                 <option value="">แผนการซื้อบ้าน</option>
@@ -99,11 +99,11 @@ const RegistrationForm = ({ id }) => {
                 <option value="1 ปีขึ้นไป">1 ปีขึ้นไป</option>
               </select>
             </div>
- 
+
             {error && (
               <div className="text-red-500 text-center">{error}</div>
             )}
- 
+
             <button
               type="submit"
               disabled={isLoading}
@@ -118,7 +118,7 @@ const RegistrationForm = ({ id }) => {
                 'ลงทะเบียนรับข้อมูล'
               )}
             </button>
- 
+
             {isSuccess && (
               <div className="flex items-center text-green-500 justify-center mt-4">
                 <svg
@@ -142,6 +142,6 @@ const RegistrationForm = ({ id }) => {
       </div>
     </section>
   );
- };
- 
- export default RegistrationForm;
+};
+
+export default RegistrationForm;

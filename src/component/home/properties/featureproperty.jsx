@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PropertyCard from '../properties/propertycard'
-import { properties } from '../../../mockdata/mockproperty'
+import PropertyCard from './propertycard'
+import { properties } from '../../mockdata/mockproperty'
 
 
 const FeaturedProperties = ({ id }) => {
@@ -10,9 +10,6 @@ const FeaturedProperties = ({ id }) => {
     <section id={id} className="py-16 bg-white">
       <div className="container mx-auto md:px-40">
         <div className="text-center mb-12">
-          {/* <span className="text-amber-600 rounded-full font-semibold mb-4 block p-1">
-            โครงการทั้งหมด
-          </span> */}
           <h2 className="text-3xl font-bold mb-8 text-blue-900">
             โครงการที่น่าสนใจ
           </h2>

@@ -3,7 +3,7 @@ import { AiOutlineTikTok } from "react-icons/ai";
 import React from 'react';
 
 const Footer = ({ id }) => {
-  // Custom Line icon since it's not available in lucide-react
+
   const LineIcon = () => (
     <svg
       viewBox="0 0 24 24"
@@ -41,11 +41,11 @@ const Footer = ({ id }) => {
           <p className="mb-5">095-564-9495, 088-838-1565</p>
         </div>
         <div className="flex justify-center gap-6">
-          <a href="https://www.facebook.com/share/1Wv712GA6U/?mibextid=wwXIfr"
+          <a href="https://www.facebook.com/share/1Wv712GA6U/?mibextid=wwXIfr" target='_blank'
             className="text-white hover:text-gray-200 flex flex-col items-center">
             <Facebook size={24} />
           </a>
-          <a href="https://lin.ee/6Z0Elh7" className="text-white hover:text-gray-200 flex flex-col items-center">
+          <a href="https://lin.ee/6Z0Elh7" target='_blank' className="text-white hover:text-gray-200 flex flex-col items-center">
             <LineIcon />
           </a>
           <a href="" className="text-white hover:text-gray-200 flex flex-col items-center">
