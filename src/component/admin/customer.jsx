@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { RefreshCw } from 'lucide-react';
 
 const RegistrationTable = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const parseDateString = (dateStr) => {
     if (!dateStr || typeof dateStr !== 'string') return null;
@@ -46,32 +48,40 @@ const RegistrationTable = () => {
     });
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://docs.google.com/spreadsheets/d/15XcD285g-_wJkzvMnBHoj77fbnYeuHi-rCPzdJdMAjk/gviz/tq?tqx=out:json'
-        );
-        const text = await response.text();
-        const jsonData = JSON.parse(text.substring(47).slice(0, -2));
-        
-        // Transform data into the format we need
-        const headers = jsonData.table.cols.map(col => col.label).slice(0, 5); // Just take first 5 columns
-        const rows = jsonData.table.rows.map(row => {
-          return row.c.slice(0, 5).map(cell => cell ? cell.v : '-'); // Only take first 5 cells
-        });
-        
-        setData({ headers, rows });
-        setLoading(false);
-      } catch (err) {
-        setError('ไม่สามารถโหลดข้อมูลได้');
-        setLoading(false);
-        console.error('Error fetching data:', err);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        'https://docs.google.com/spreadsheets/d/15XcD285g-_wJkzvMnBHoj77fbnYeuHi-rCPzdJdMAjk/gviz/tq?tqx=out:json'
+      );
+      const text = await response.text();
+      const jsonData = JSON.parse(text.substring(47).slice(0, -2));
+      
+      // Transform data into the format we need
+      const headers = jsonData.table.cols.map(col => col.label).slice(0, 5);
+      const rows = jsonData.table.rows.map(row => {
+        return row.c.slice(0, 5).map(cell => cell ? cell.v : '-');
+      });
+      
+      setData({ headers, rows });
+      setLoading(false);
+      setIsRefreshing(false);
+    } catch (err) {
+      setError('ไม่สามารถโหลดข้อมูลได้');
+      setLoading(false);
+      setIsRefreshing(false);
+      console.error('Error fetching data:', err);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
+
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    setError(null);
+    fetchData();
+  };
 
   if (loading) {
     return (
@@ -81,52 +91,62 @@ const RegistrationTable = () => {
     );
   }
 
-  if (error) {
-    return (
-      <div className="text-center text-red-600 p-4">
-        <p>{error}</p>
-      </div>
-    );
-  }
-
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
       <div className="p-4 border-b flex justify-between items-center">
         <h2 className="text-lg font-semibold">ข้อมูลลงทะเบียน</h2>
+        <button
+          onClick={handleRefresh}
+          disabled={isRefreshing}
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+        >
+          <RefreshCw 
+            size={16} 
+            className={`${isRefreshing ? 'animate-spin' : ''}`}
+          />
+          รีเฟรช
+        </button>
       </div>
-      <div className="overflow-x-auto shadow-md rounded-lg">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              {data.headers.map((header, index) => (
-                <th 
-                  key={index}
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {data.rows.map((row, rowIndex) => (
-              <tr 
-                key={rowIndex}
-                className="hover:bg-gray-50"
-              >
-                {row.map((cell, cellIndex) => (
-                  <td 
-                    key={cellIndex}
-                    className="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+      
+      {error ? (
+        <div className="text-center text-red-600 p-4">
+          <p>{error}</p>
+        </div>
+      ) : (
+        <div className="overflow-x-auto shadow-md rounded-lg">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                {data.headers.map((header, index) => (
+                  <th 
+                    key={index}
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    {cellIndex === 0 ? formatDate(cell) : cell}
-                  </td>
+                    {header}
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {data.rows.map((row, rowIndex) => (
+                <tr 
+                  key={rowIndex}
+                  className="hover:bg-gray-50"
+                >
+                  {row.map((cell, cellIndex) => (
+                    <td 
+                      key={cellIndex}
+                      className="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                    >
+                      {cellIndex === 0 ? formatDate(cell) : cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,10 +1,10 @@
 // authCookie.js
 import Cookies from 'js-cookie';
 
-// Set auth cookie with 7 days expiration
+// Set auth cookie with 5 minutes expiration
 export const setAuthCookie = () => {
     const expirationDate = new Date();
-    expirationDate.setHours(expirationDate.getHours() + 8);
+    expirationDate.setMinutes(expirationDate.getMinutes() + 5);
     Cookies.set('adminAuth', 'true', { expires: expirationDate });
 };
 
