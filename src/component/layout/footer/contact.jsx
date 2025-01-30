@@ -48,12 +48,12 @@ const Footer = ({ id }) => {
           <a href="https://lin.ee/6Z0Elh7" target='_blank' className="text-white hover:text-gray-200 flex flex-col items-center">
             <LineIcon />
           </a>
-          <a href="" className="text-white hover:text-gray-200 flex flex-col items-center">
+          <a href="https://www.tiktok.com/@saleskrailert?_t=ZS-8tKjOEEHNVS&_r=1" target='_blank' className="text-white hover:text-gray-200 flex flex-col items-center">
             <AiOutlineTikTok size={24} />
           </a>
-          <a href="" className="text-white hover:text-gray-200 flex flex-col items-center">
+          {/* <a href="" className="text-white hover:text-gray-200 flex flex-col items-center">
             <Instagram size={24} />
-          </a>
+          </a> */}
         </div>
       </div>
     </section>

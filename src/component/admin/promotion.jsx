@@ -106,7 +106,7 @@ const Promotions = () => {
 
     return (
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div className="p-4 border-b flex justify-between items-center">
+            <div className="p-5 border-b flex justify-between items-center">
                 <h2 className="text-lg font-semibold">รายการโปรโมชั่น</h2>
             </div>
             
