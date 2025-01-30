@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Users, LogOut, X } from 'lucide-react';
+import { Home, TagIcon, Users, LogOut, X } from 'lucide-react';
 
 const Sidebar = ({ isOpen, onClose, onLogout, activeTab, onTabChange }) => {
     return (
@@ -21,7 +21,7 @@ const Sidebar = ({ isOpen, onClose, onLogout, activeTab, onTabChange }) => {
                         activeTab === 'promotions' ? 'bg-blue-50 text-blue-600' : 'text-gray-600'
                     }`}
                 >
-                    <Home size={20} />
+                    <TagIcon size={20} />
                     <span>โปรโมชั่น</span>
                 </button>
                 

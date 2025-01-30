@@ -1,30 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../component/admin/panel';
 import Promotions from '../component/admin/promotion';
 import RegistrationTable from '../component/admin/customer';
+import { removeAuthCookie } from '../authen/cookie'; // เพิ่ม import
 
 const AdminPage = () => {
+    const navigate = useNavigate();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-    // ใช้ localStorage เพื่อเก็บ state ของ tab
     const [activeTab, setActiveTab] = useState(() => {
         const savedTab = localStorage.getItem('adminActiveTab');
         return savedTab || 'promotions';
     });
 
-    // บันทึก state ลง localStorage เมื่อมีการเปลี่ยน tab
     useEffect(() => {
         localStorage.setItem('adminActiveTab', activeTab);
-    }, [activeTab]);
-
-    // แสดง log เพื่อ debug
-    useEffect(() => {
-        console.log('Current active tab:', activeTab);
     }, [activeTab]);
 
     const handleTabChange = (tab) => {
         console.log('Changing to tab:', tab);
         setActiveTab(tab);
+    };
+
+    const handleLogout = () => {
+        // ลบ auth cookie
+        removeAuthCookie();
+        
+        // ลบข้อมูล state ต่างๆ
+        localStorage.removeItem('adminActiveTab');
+        
+        // ถ้ามี state อื่นๆ ที่ต้องลบตอน logout ก็เพิ่มตรงนี้
+        
+        // redirect ไปหน้า login
+        navigate('/login', { replace: true });
     };
 
     return (
@@ -34,6 +43,7 @@ const AdminPage = () => {
                 onClose={() => setIsSidebarOpen(false)}
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
+                onLogout={handleLogout}
             />
 
             <div className={`${isSidebarOpen ? 'lg:ml-64' : ''} transition-all duration-300`}>
