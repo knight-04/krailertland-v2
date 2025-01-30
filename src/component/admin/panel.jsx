@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, TagIcon, Users, LogOut, X } from 'lucide-react';
+import { TagIcon, Users, LogOut, X } from 'lucide-react';
 
 const Sidebar = ({ isOpen, onClose, onLogout, activeTab, onTabChange }) => {
     return (

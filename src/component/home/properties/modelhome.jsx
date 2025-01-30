@@ -15,8 +15,8 @@ const HouseDetails = ({ id }) => {
   const featureIcons = [
     { icon: BedDouble, label: currentHouse.features.bedroom },
     { icon: ShowerHead, label: currentHouse.features.bathroom },
-    { icon: CarFront, label: currentHouse.features.kitchen },
-    { icon: CookingPot, label: currentHouse.features.garage },
+    { icon: CarFront, label: currentHouse.features.garage },
+    { icon: CookingPot, label: currentHouse.features.kitchen },
     { icon: Fence, label: currentHouse.features.area },
     { icon: LucideHouse, label: currentHouse.features.useable }
   ];

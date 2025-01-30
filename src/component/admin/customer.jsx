@@ -93,12 +93,12 @@ const RegistrationTable = () => {
 
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-      <div className="p-4 border-b flex justify-between items-center">
+      <div className="p-4 border-b flex justify-start items-center">
         <h2 className="text-lg font-semibold">ข้อมูลลงทะเบียน</h2>
         <button
           onClick={handleRefresh}
           disabled={isRefreshing}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700  hover:bg-gray-50 disabled:opacity-50"
         >
           <RefreshCw 
             size={16} 
