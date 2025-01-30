@@ -55,7 +55,7 @@ const RegistrationForm = ({ id }) => {
       <div className="w-full bg-[#1B2848]">
         <div className="w-full max-w-2xl mx-auto p-6 bg-[#1B2848]">
           <h1 className="text-xl font-bold text-white mb-6 text-center">
-            ลงทะเบียนรับสิทธิพิเศษ รับข้อมูล
+            ลงทะเบียนรับสิทธิพิเศษ
           </h1>
 
           <form onSubmit={handleSubmit} className="space-y-4">
